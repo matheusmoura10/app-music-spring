@@ -14,18 +14,19 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class RedisConfig {
 
-    @Bean
-    public RedisCacheConfiguration defaultCacheConfiguration() {
-        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(
-                Object.class);
+        @Bean
+        public RedisCacheConfiguration defaultCacheConfiguration() {
+                Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(
+                                Object.class);
 
-        // Configura a configuração do cache Redis
-        return RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofMinutes(120)) // 2 horas
-                .disableCachingNullValues()
-                .serializeValuesWith(
-                        RedisSerializationContext.SerializationPair.fromSerializer(jackson2JsonRedisSerializer))
-                .serializeKeysWith(
-                        RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()));
-    }
+                return RedisCacheConfiguration.defaultCacheConfig()
+                                .entryTtl(Duration.ofMinutes(120)) // 2 horas
+                                .disableCachingNullValues()
+                                .serializeValuesWith(
+                                                RedisSerializationContext.SerializationPair
+                                                                .fromSerializer(jackson2JsonRedisSerializer))
+                                .serializeKeysWith(
+                                                RedisSerializationContext.SerializationPair
+                                                                .fromSerializer(new StringRedisSerializer()));
+        }
 }

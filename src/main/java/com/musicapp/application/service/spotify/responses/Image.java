@@ -19,6 +19,4 @@ public class Image implements Serializable {
 
     @JsonProperty("width")
     private int width;
-
-    // Getters and setters
 }

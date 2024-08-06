@@ -32,7 +32,6 @@ public abstract class BaseHttp {
         return restTemplate.exchange(url, method, new HttpEntity<>(body, headers), String.class);
     }
 
-    // Novo método para adicionar um header Authorization
     protected HttpHeaders createHeaders(String token) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + token);
