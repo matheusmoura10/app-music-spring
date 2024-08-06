@@ -19,7 +19,7 @@ public class SpotifyService implements SearchService<ResponsePlaylist, ResponseT
     }
 
     @Override
-    @Cacheable(value = "playlists_spotify", key = "#query")
+    @Cacheable(value = "playlists_spotify", key = "#query", condition = "#query != 'metallica'")
     public ResponsePlaylist searchPlayList(String query) {
 
         return playListService.searchPlaylists(query);
