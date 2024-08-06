@@ -13,10 +13,9 @@ import com.musicapp.domain.core.SearchService;
 @RequestMapping("/songs")
 public class SongController {
 
-    @SuppressWarnings("rawtypes")
     private final SearchService searchService;
 
-    public SongController(@SuppressWarnings("rawtypes") @Qualifier("searchService") SearchService searchService) {
+    public SongController(@Qualifier("searchService") SearchService searchService) {
         this.searchService = searchService;
     }
 

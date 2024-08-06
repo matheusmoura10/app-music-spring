@@ -1,5 +1,6 @@
 package com.musicapp.application.service.spotify;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.musicapp.application.service.spotify.responses.ResponsePlaylist;
@@ -18,12 +19,14 @@ public class SpotifyService implements SearchService<ResponsePlaylist, ResponseT
     }
 
     @Override
+    @Cacheable(value = "playlists_spotify", key = "#query")
     public ResponsePlaylist searchPlayList(String query) {
 
         return playListService.searchPlaylists(query);
     }
 
     @Override
+    @Cacheable(value = "tracks_spotify", key = "#query")
     public ResponseTracks searchTrack(String query) {
         return trackService.searchSongs(query);
     }
